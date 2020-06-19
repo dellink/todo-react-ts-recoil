@@ -1,6 +1,12 @@
 import React from "react";
+import { useRecoilValue } from "recoil";
+import { todoListState } from "../atoms";
+import { Todo } from "../types";
+import TodoItem from "./TodoItem";
 
 export default function TodoList() {
+  const todoList = useRecoilValue(todoListState);
+  
   return (
     <section className="todoapp">
       <header className="header">
@@ -19,6 +25,9 @@ export default function TodoList() {
         />
         <label htmlFor="toggle-all" />
         <ul className="todo-list">
+          {todoList.map((todoItem: Todo) => (
+            <TodoItem key={todoItem.id} item={todoItem} />
+          ))}
         </ul>
       </section>
     </section>
