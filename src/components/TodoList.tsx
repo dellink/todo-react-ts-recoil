@@ -3,6 +3,7 @@ import { useRecoilValue } from "recoil";
 import { todoListState } from "../atoms";
 import { Todo } from "../types";
 import TodoItem from "./TodoItem";
+import { TodoItemCreator } from "./TodoItemCreator";
 
 export default function TodoList() {
   const todoList = useRecoilValue(todoListState);
@@ -11,10 +12,7 @@ export default function TodoList() {
     <section className="todoapp">
       <header className="header">
         <h1>todos</h1>
-        <input
-          className="new-todo"
-          placeholder="What needs to be done?"
-        />
+        <TodoItemCreator />
       </header>
 
       <section className="main">
@@ -24,9 +22,10 @@ export default function TodoList() {
           className="toggle-all"
         />
         <label htmlFor="toggle-all" />
+        
         <ul className="todo-list">
           {todoList.map((todoItem: Todo) => (
-            <TodoItem key={todoItem.id} item={todoItem} />
+            <TodoItem key={todoItem.id} todo={todoItem} />
           ))}
         </ul>
       </section>
