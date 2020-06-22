@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useRecoilValue, useRecoilState } from "recoil";
 import { useLocation } from 'react-router-dom';
 
@@ -11,18 +11,8 @@ import { TodoItemCreator } from "./TodoItemCreator";
 
 export default function TodoList() {
   let location = useLocation();
-  const filteredTodoList = useRecoilValue(filteredTodoListState);
-  const [filterState, setFilterState] = useRecoilState(todoListFilterState);
-
-  useEffect(() => {
-    if (location.pathname === '/completed') {
-      setFilterState(FilterState.ShowCompleted);
-    } else if (location.pathname === '/active') {
-      setFilterState(FilterState.ShowUncompleted);
-    } else {
-      setFilterState(FilterState.ShowAll);
-    }
-  }, [location, setFilterState]);
+  const filteredTodoList = useRecoilValue(filteredTodoListState(location.pathname));
+  const filterState = useRecoilValue(todoListFilterState(location.pathname));
 
   const {
     isAllCompleted,

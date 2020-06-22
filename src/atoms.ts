@@ -1,4 +1,4 @@
-import { atom } from "recoil";
+import { atom, atomFamily } from "recoil";
 
 import { Todo, FilterState } from './types';
 
@@ -7,7 +7,15 @@ export const todoListState = atom<Todo[]>({
   default: [],
 });
 
-export const todoListFilterState = atom({
+export const todoListFilterState = atomFamily({
   key: 'todoListFilterState',
-  default: FilterState.ShowAll,
+  default: pathname => {
+    if (pathname === '/completed') {
+      return FilterState.ShowCompleted;
+    } else if (pathname === '/active') {
+      return FilterState.ShowUncompleted;
+    } else {
+      return FilterState.ShowAll;
+    }
+  },
 });

@@ -1,23 +1,6 @@
-import { selector } from "recoil";
+import { selector, selectorFamily } from "recoil";
 import { todoListFilterState, todoListState } from "./atoms";
 import { FilterState } from "./types";
-
-export const filteredTodoListState = selector({
-  key: 'filteredTodoListState',
-  get: ({get}) => {
-    const filter = get(todoListFilterState);
-    const list = get(todoListState);
-
-    switch (filter) {
-      case FilterState.ShowCompleted:
-        return list.filter((item) => item.isCompleted);
-      case FilterState.ShowUncompleted:
-        return list.filter((item) => !item.isCompleted);
-      default:
-        return list;
-    }
-  },
-});
 
 export const todoListStatsState = selector({
   key: 'todoListStatsState',
@@ -33,5 +16,22 @@ export const todoListStatsState = selector({
       totalCompletedNum,
       totalUncompletedNum,
     };
+  },
+});
+
+export const filteredTodoListState = selectorFamily({
+  key: 'filteredTodoListState',
+  get: (pathname) => ({get}) => {
+    const filter = get(todoListFilterState(pathname));
+    const list = get(todoListState);
+
+    switch (filter) {
+      case FilterState.ShowCompleted:
+        return list.filter((item) => item.isCompleted);
+      case FilterState.ShowUncompleted:
+        return list.filter((item) => !item.isCompleted);
+      default:
+        return list;
+    }
   },
 });
