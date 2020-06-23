@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Todo } from "../types";
 import { useRecoilState } from "recoil";
-import { todoListState } from "../atoms";
+import { todoListState } from "../state/atoms";
 
 const ENTER_KEY = 13;
 const ESCAPE_KEY = 27;

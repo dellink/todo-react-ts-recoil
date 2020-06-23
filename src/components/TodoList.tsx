@@ -3,8 +3,8 @@ import { useRecoilValue, useRecoilState } from "recoil";
 import { useLocation } from 'react-router-dom';
 
 import { Todo, FilterState } from "../types";
-import { filteredTodoListState, todoListStatsState } from "../selectors";
-import { todoListState, todoListFilterState } from "../atoms";
+import { filteredTodoListState, todoListStatsState } from "../state/selectors";
+import { todoListState, todoListFilterState } from "../state/atoms";
 
 import TodoItem from "./TodoItem";
 import { TodoItemCreator } from "./TodoItemCreator";

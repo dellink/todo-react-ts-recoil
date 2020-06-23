@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSetRecoilState } from "recoil";
-import { todoListState } from "../atoms";
+import { todoListState } from "../state/atoms";
 import { Todo } from "../types";
 
 const ENTER_KEY = 13;
