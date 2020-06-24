@@ -1,6 +1,6 @@
 import { selector, selectorFamily } from "recoil";
 import { todoListFilterState, todoListState } from "./atoms";
-import { FilterState } from "../types";
+import { FilterState, Todo } from "../types";
 
 export const todoListStatsState = selector({
   key: 'todoListStatsState',
@@ -19,9 +19,9 @@ export const todoListStatsState = selector({
   },
 });
 
-export const filteredTodoListState = selectorFamily({
+export const filteredTodoListState = selectorFamily<Todo[], string>({
   key: 'filteredTodoListState',
-  get: (pathname) => ({get}) => {
+  get: (pathname: string) => ({get}) => {
     const filter = get(todoListFilterState(pathname));
     const list = get(todoListState);
 

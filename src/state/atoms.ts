@@ -7,7 +7,7 @@ export const todoListState = atom<Todo[]>({
   default: [],
 });
 
-export const todoListFilterState = atomFamily({
+export const todoListFilterState = atomFamily<FilterState, string>({
   key: 'todoListFilterState',
   default: pathname => {
     if (pathname === '/completed') {
