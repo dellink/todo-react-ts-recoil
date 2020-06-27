@@ -1,11 +1,9 @@
 import React from "react";
-import { useRecoilValue, useRecoilState } from "recoil";
 import { useLocation } from 'react-router-dom';
-
-import { Todo, FilterState } from "../types";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { todoListFilterState, todoListState } from "../state/atoms";
 import { filteredTodoListState, todoListStatsState } from "../state/selectors";
-import { todoListState, todoListFilterState } from "../state/atoms";
-
+import { FilterState, Todo } from "../types";
 import TodoItem from "./TodoItem";
 import { TodoItemCreator } from "./TodoItemCreator";
 
@@ -39,11 +37,11 @@ export default function TodoList() {
       {todoList.length > 0 && (
         <section className="main">
           <input
-            id="toggle-all"
-            type="checkbox"
-            className="toggle-all"
             checked={isAllCompleted}
+            className="toggle-all"
+            id="toggle-all"
             onChange={onToggleAll}
+            type="checkbox"
           />
           <label htmlFor="toggle-all" />
           

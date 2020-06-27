@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Todo } from "../types";
 import { useRecoilState } from "recoil";
 import { todoListState } from "../state/atoms";
+import { Todo } from "../types";
 
 const ENTER_KEY = 13;
 const ESCAPE_KEY = 27;
@@ -50,16 +50,16 @@ export default function TodoItem({ todo }: { todo: Todo}) {
   
   return (
     <li
-      onDoubleClick={handleViewClick}
       className={`${editing ? "editing" : ""} ${todo.isCompleted ? "completed" : ""}`}
+      onDoubleClick={handleViewClick}
     >
       <div className="view">
         <input
-          type="checkbox"
-          className="toggle"
-          checked={todo.isCompleted}
-          onChange={toggleItemCompletion}
           autoFocus={true}
+          checked={todo.isCompleted}
+          className="toggle"
+          onChange={toggleItemCompletion}
+          type="checkbox"
         />
         <label>{todo.text}</label>
         <button className="destroy" onClick={deleteItem} />
@@ -67,9 +67,9 @@ export default function TodoItem({ todo }: { todo: Todo}) {
       {editing && (
         <input
           className="edit"
-          value={editText}
           onChange={handleChange}
           onKeyDown={handleKeyDown}
+          value={editText}
         />
       )}
     </li>

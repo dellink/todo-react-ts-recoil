@@ -30,10 +30,10 @@ export function TodoItemCreator() {
   return (
     <input
       className="new-todo"
-      placeholder="What needs to be done?"
-      onKeyDown={handleKeyDown}
-      value={inputValue}
       onChange={onChange}
+      onKeyDown={handleKeyDown}
+      placeholder="What needs to be done?"
+      value={inputValue}
     />
   );
 }

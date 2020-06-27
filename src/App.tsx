@@ -1,11 +1,10 @@
-import React from 'react';
-import { RecoilRoot } from 'recoil';
-import { HashRouter, Route } from "react-router-dom";
+import "todomvc-app-css/index.css";
 
+import React from 'react';
+import { HashRouter, Route } from "react-router-dom";
+import { RecoilRoot } from 'recoil';
 import Footer from './components/Footer';
 import TodoList from './components/TodoList';
-
-import "todomvc-app-css/index.css";
 
 function App() {
   return (

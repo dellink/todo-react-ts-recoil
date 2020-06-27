@@ -1,6 +1,5 @@
 import { atom, atomFamily } from "recoil";
-
-import { Todo, FilterState } from '../types';
+import { FilterState, Todo } from '../types';
 
 export const todoListState = atom<Todo[]>({
   key: 'todoListState',
