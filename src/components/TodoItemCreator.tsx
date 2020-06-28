@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { useSetRecoilState } from "recoil";
+import { ENTER_KEY } from "../constants";
 import { todoListState } from "../state/atoms";
 import { Todo } from "../types";
-
-const ENTER_KEY = 13;
 
 export function TodoItemCreator() {
   const [inputValue, setInputValue] = useState('');

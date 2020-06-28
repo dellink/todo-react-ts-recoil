@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { useRecoilState } from "recoil";
+import { ENTER_KEY, ESCAPE_KEY } from "../constants";
 import { todoListState } from "../state/atoms";
 import { Todo } from "../types";
-
-const ENTER_KEY = 13;
-const ESCAPE_KEY = 27;
 
 export default function TodoItem({ todo }: { todo: Todo}) {
 
